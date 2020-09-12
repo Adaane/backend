@@ -8,11 +8,12 @@ const app = express();
 const PORT = 3000;
 
 // connexion mongoose
-mongoose.Promise = new Promise();
-mongoose.connect('mongodb://localhost/CRMdb', {
-    useMongoClient: true
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost:27017/CRMdb', {
+    useNewUrlParser: true, useUnifiedTopology: true
 });
 
+//bodyParser
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
